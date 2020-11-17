@@ -9,32 +9,22 @@ import SwiftUI
 import Charts
 
 struct ContentView: View {
-    var dataSets:[[BarChartDataEntry]] = [
-        [
-            BarChartDataEntry(x: 0, y: 1),
-            BarChartDataEntry(x: 1, y: 1),
-            BarChartDataEntry(x: 2, y: 6),
-            BarChartDataEntry(x: 3, y: 3),
-            BarChartDataEntry(x: 4, y: 5)
-        ], [
-            
-            BarChartDataEntry(x: 0, y: 10.2),
-            BarChartDataEntry(x: 1, y: 3),
-            BarChartDataEntry(x: 2, y: 4),
-            BarChartDataEntry(x: 3, y: 1),
-            BarChartDataEntry(x: 4, y: 3)
-        ]
-    ]
-    
+
+    @State private var selectedItem:SampleData = SampleData.initialItem(year: 2020)
     @State private var barEntries: [BarChartDataEntry] = []
-    @State private var firstDataSet = true
     var body: some View {
         VStack {
-            Button("Update Chart") {
-                firstDataSet.toggle()
+            Text("\(selectedItem.year)".replacingOccurrences(of: ",", with: ""))
+                .font(.title2)
+            if selectedItem.month != -1 {
+                Text("\(Int(selectedItem.quantity)) for \(SampleData.monthArray[Int(selectedItem.month)])")
             }
-            BarChart(entries: firstDataSet ? dataSets[0] : dataSets[1])
-                .frame(height: 200)
+            Button("Change Year") {
+                selectedItem.year = (selectedItem.year) == 2020 ? 2019 : 2020
+                selectedItem.month = -1
+            }
+            BarChart(entries: SampleData.dataForYear(selectedItem.year), selectedItem: $selectedItem)
+                .frame(height: 500)
         }
     }
 }

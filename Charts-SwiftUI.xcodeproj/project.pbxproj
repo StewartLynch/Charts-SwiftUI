@@ -7,26 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BB97D6772562E5AD0094D812 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB97D6722562E5A00094D812 /* Charts.framework */; };
-		BB97D6782562E5AD0094D812 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB97D6722562E5A00094D812 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BBC3C5B32562029300E3FFFD /* Charts_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC3C5B22562029300E3FFFD /* Charts_SwiftUIApp.swift */; };
 		BBC3C5B52562029300E3FFFD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC3C5B42562029300E3FFFD /* ContentView.swift */; };
 		BBC3C5B72562029400E3FFFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBC3C5B62562029400E3FFFD /* Assets.xcassets */; };
 		BBC3C5BA2562029400E3FFFD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBC3C5B92562029400E3FFFD /* Preview Assets.xcassets */; };
 		BBC3C5D3256207F200E3FFFD /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC3C5D2256207F200E3FFFD /* BarChart.swift */; };
+		BBF4E9C2256364D6001BB1DB /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF4E9BD256364C6001BB1DB /* Charts.framework */; };
+		BBF4E9C3256364D6001BB1DB /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BBF4E9BD256364C6001BB1DB /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		BB97D6712562E5A00094D812 /* PBXContainerItemProxy */ = {
+		BBF4E9BC256364C6001BB1DB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = BB97D66C2562E5990094D812 /* Charts.xcodeproj */;
+			containerPortal = BBF4E9B7256364C6001BB1DB /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
 			remoteInfo = Charts;
 		};
-		BB97D6732562E5A00094D812 /* PBXContainerItemProxy */ = {
+		BBF4E9BE256364C6001BB1DB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = BB97D66C2562E5990094D812 /* Charts.xcodeproj */;
+			containerPortal = BBF4E9B7256364C6001BB1DB /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
 			remoteInfo = ChartsTests;
@@ -40,7 +40,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				BB97D6782562E5AD0094D812 /* Charts.framework in Embed Frameworks */,
+				BBF4E9C3256364D6001BB1DB /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,7 +48,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		BB97D66C2562E5990094D812 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../../Library/Mobile Documents/com~apple~CloudDocs/Desktop/Charts-SwiftUI/Charts-SwiftUI/Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
 		BBC3C5AF2562029300E3FFFD /* Charts-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Charts-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBC3C5B22562029300E3FFFD /* Charts_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Charts_SwiftUIApp.swift; sourceTree = "<group>"; };
 		BBC3C5B42562029300E3FFFD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -56,6 +55,7 @@
 		BBC3C5B92562029400E3FFFD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BBC3C5BB2562029400E3FFFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBC3C5D2256207F200E3FFFD /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
+		BBF4E9B7256364C6001BB1DB /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,22 +63,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB97D6772562E5AD0094D812 /* Charts.framework in Frameworks */,
+				BBF4E9C2256364D6001BB1DB /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BB97D66D2562E5990094D812 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				BB97D6722562E5A00094D812 /* Charts.framework */,
-				BB97D6742562E5A00094D812 /* ChartsTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		BBC3C5A62562029200E3FFFD = {
 			isa = PBXGroup;
 			children = (
@@ -99,10 +90,10 @@
 		BBC3C5B12562029300E3FFFD /* Charts-SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				BBC3C5D2256207F200E3FFFD /* BarChart.swift */,
 				BBC3C5B22562029300E3FFFD /* Charts_SwiftUIApp.swift */,
-				BB97D66C2562E5990094D812 /* Charts.xcodeproj */,
 				BBC3C5B42562029300E3FFFD /* ContentView.swift */,
+				BBF4E9B7256364C6001BB1DB /* Charts.xcodeproj */,
+				BBC3C5D2256207F200E3FFFD /* BarChart.swift */,
 				BBC3C5B62562029400E3FFFD /* Assets.xcassets */,
 				BBC3C5BB2562029400E3FFFD /* Info.plist */,
 				BBC3C5B82562029400E3FFFD /* Preview Content */,
@@ -123,6 +114,15 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BBF4E9B8256364C6001BB1DB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BBF4E9BD256364C6001BB1DB /* Charts.framework */,
+				BBF4E9BF256364C6001BB1DB /* ChartsTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,8 +173,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = BB97D66D2562E5990094D812 /* Products */;
-					ProjectRef = BB97D66C2562E5990094D812 /* Charts.xcodeproj */;
+					ProductGroup = BBF4E9B8256364C6001BB1DB /* Products */;
+					ProjectRef = BBF4E9B7256364C6001BB1DB /* Charts.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -185,18 +185,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		BB97D6722562E5A00094D812 /* Charts.framework */ = {
+		BBF4E9BD256364C6001BB1DB /* Charts.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Charts.framework;
-			remoteRef = BB97D6712562E5A00094D812 /* PBXContainerItemProxy */;
+			remoteRef = BBF4E9BC256364C6001BB1DB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		BB97D6742562E5A00094D812 /* ChartsTests.xctest */ = {
+		BBF4E9BF256364C6001BB1DB /* ChartsTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ChartsTests.xctest;
-			remoteRef = BB97D6732562E5A00094D812 /* PBXContainerItemProxy */;
+			remoteRef = BBF4E9BE256364C6001BB1DB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
