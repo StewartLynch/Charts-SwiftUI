@@ -24,7 +24,7 @@ struct SampleBarChartData {
     static var monthArray = ["Jan","Feb","Mar","Apr","May","Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     static func dataForYear(_ year: Int, itemType:ItemType = .itemIn) -> [BarChartDataEntry] {
         let yearData = SampleBarChartData.mySamples.filter{$0.year == year && $0.itemType == itemType}
-        return yearData.map{BarChartDataEntry(x: $0.month, y: $0.quantity)}
+        return yearData.map{BarChartDataEntry(x: $0.month, y: $0.quantity * (itemType == ItemType.itemOut ? -1 : 1))}
     }
 
     static var mySamples:[SampleBarChartData] {
@@ -41,7 +41,7 @@ struct SampleBarChartData {
             SampleBarChartData(year: 2019, month: 9, quantity: 75, itemType: .itemIn),
             SampleBarChartData(year: 2019, month: 10, quantity: 20, itemType:.itemIn),
             SampleBarChartData(year: 2019, month: 11, quantity: 90, itemType:.itemIn),
-            SampleBarChartData(year: 2020, month: 0, quantity: 23, itemType: .itemOut),
+            SampleBarChartData(year: 2019, month: 0, quantity: 23, itemType: .itemOut),
             SampleBarChartData(year: 2019, month: 1, quantity: 45, itemType: .itemOut),
             SampleBarChartData(year: 2019, month: 2, quantity: 20, itemType: .itemOut),
             SampleBarChartData(year: 2019, month: 3, quantity: 32, itemType: .itemOut),

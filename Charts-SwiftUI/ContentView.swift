@@ -10,7 +10,7 @@ import Charts
 
 struct ContentView: View {
 
-    @State private var selectedItem:SampleBarChartData = SampleBarChartData.initialItem(year: 2020)
+    @State private var selectedItem:SampleBarChartData = SampleBarChartData.initialItem(year: 2019)
     @State private var barEntries: [BarChartDataEntry] = []
     var body: some View {
         VStack {
