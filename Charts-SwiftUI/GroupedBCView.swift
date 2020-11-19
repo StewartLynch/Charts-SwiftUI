@@ -9,8 +9,8 @@ import SwiftUI
 import Charts
 
 struct GroupedBCView: View {
-    var entriesIn:[BarChartDataEntry] = SampleBarChartData.dataForYear(2019, itemType: .itemIn)
-    var entriesOut:[BarChartDataEntry] = SampleBarChartData.dataForYear(2019, itemType: .itemOut)
+    var entriesIn:[BarChartDataEntry] = SampleBarChartData.dataForYear(2020, itemType: .itemIn)
+    var entriesOut:[BarChartDataEntry] = SampleBarChartData.dataForYear(2020, itemType: .itemOut)
     var body: some View {
         GroupedBarChart(entriesIn: entriesIn, entriesOut: entriesOut)
             .frame(height: 500)
