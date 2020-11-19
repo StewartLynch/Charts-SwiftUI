@@ -24,7 +24,7 @@ struct ContentView: View {
                 selectedItem.month = -1
             }
             BarChart(entries: SampleData.dataForYear(selectedItem.year), selectedItem: $selectedItem)
-                .frame(height: 500)
+                .frame(height: 300)
         }
     }
 }
