@@ -11,7 +11,7 @@ import SwiftUI
 struct BarChart : UIViewRepresentable {
     var entries : [BarChartDataEntry]
     let chart = BarChartView()
-    @Binding var selectedItem: SampleData
+    @Binding var selectedItem: SampleBarChartData
     func makeUIView(context: Context) -> BarChartView {
         chart.delegate = context.coordinator
         return chart
@@ -85,7 +85,7 @@ struct BarChart : UIViewRepresentable {
 
     func formatXAxis(xAxis: XAxis) {
         xAxis.labelPosition = .bottom
-        xAxis.valueFormatter = IndexAxisValueFormatter(values:SampleData.monthArray)
+        xAxis.valueFormatter = IndexAxisValueFormatter(values:SampleBarChartData.monthArray)
         xAxis.labelTextColor =  .red
     }
     
@@ -100,53 +100,6 @@ struct BarChart : UIViewRepresentable {
 
 struct BarChart_Previews: PreviewProvider {
     static var previews: some View {
-        BarChart(entries: SampleData.dataForYear(2020), selectedItem: .constant(SampleData.selectedItem))
+        BarChart(entries: SampleBarChartData.dataForYear(2020), selectedItem: .constant(SampleBarChartData.selectedItem))
     }
-}
-
-
-struct SampleData {
-    var year: Int
-    var month: Double
-    var quantity: Double
-    
-    static var selectedItem = SampleData(year: 2020, month: -1, quantity: -1)
-    static func initialItem(year: Int) -> SampleData {
-        SampleData(year: year, month: -1, quantity: -1)
-    }
-    static var monthArray = ["Jan","Feb","Mar","Apr","May","Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    static func dataForYear(_ year: Int) -> [BarChartDataEntry] {
-        let yearData = SampleData.mySamples.filter{$0.year == year}
-        return yearData.map{BarChartDataEntry(x: $0.month, y: $0.quantity)}
-    }
-
-    static var mySamples:[SampleData] {
-        [
-            SampleData(year: 2019, month: 0, quantity: 86),
-            SampleData(year: 2019, month: 1, quantity: 15),
-            SampleData(year: 2019, month: 2, quantity: 50),
-            SampleData(year: 2019, month: 3, quantity: 62),
-            SampleData(year: 2019, month: 4, quantity: 20),
-            SampleData(year: 2019, month: 5, quantity: 19),
-            SampleData(year: 2019, month: 6, quantity: 71),
-            SampleData(year: 2019, month: 7, quantity: 52),
-            SampleData(year: 2019, month: 8, quantity: 33),
-            SampleData(year: 2019, month: 9, quantity: 75),
-            SampleData(year: 2019, month: 10, quantity: 20),
-            SampleData(year: 2019, month: 11, quantity: 90),
-            SampleData(year: 2020, month: 0, quantity: 43),
-            SampleData(year: 2020, month: 1, quantity: 0),
-            SampleData(year: 2020, month: 2, quantity: 22),
-            SampleData(year: 2020, month: 3, quantity: 15),
-            SampleData(year: 2020, month: 4, quantity: 88),
-            SampleData(year: 2020, month: 5, quantity: 7),
-            SampleData(year: 2020, month: 6, quantity: 0),
-            SampleData(year: 2020, month: 7, quantity: 0),
-            SampleData(year: 2020, month: 8, quantity: 0),
-            SampleData(year: 2020, month: 9, quantity: 0),
-            SampleData(year: 2020, month: 10, quantity: 0),
-            SampleData(year: 2020, month: 11, quantity: 0)
-        ]
-    }
-
 }
