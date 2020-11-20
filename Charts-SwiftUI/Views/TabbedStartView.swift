@@ -26,6 +26,11 @@ struct TabbedStartView: View {
                     Image(systemName: "chart.pie.fill")
                     Text("Pie Chart")
                 }
+            LineChrtView()
+                .tabItem {
+                    Image(systemName: "waveform.path.ecg.rectangle")
+                    Text("Line Chart")
+                }
         }
     }
 }

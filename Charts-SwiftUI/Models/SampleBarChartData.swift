@@ -27,6 +27,11 @@ struct SampleBarChartData {
         return yearData.map{BarChartDataEntry(x: $0.month, y: $0.quantity * (itemType == ItemType.itemOut ? -1 : 1))}
     }
 
+    static func lineChartDataForYear(_ year: Int, itemType:ItemType = .itemIn) -> [ChartDataEntry] {
+        let yearData = SampleBarChartData.mySamples.filter{$0.year == year && $0.itemType == itemType}
+        return yearData.map{BarChartDataEntry(x: $0.month, y: $0.quantity * (itemType == ItemType.itemOut ? -1 : 1))}
+    }
+
     static var mySamples:[SampleBarChartData] {
         [
             SampleBarChartData(year: 2019, month: 0, quantity: 86, itemType: .itemIn),
