@@ -9,9 +9,9 @@ import Charts
 import SwiftUI
 
 struct BarChart : UIViewRepresentable {
+    @Binding var selectedItem: SampleBarChartData
     var entries : [BarChartDataEntry]
     let chart = BarChartView()
-    @Binding var selectedItem: SampleBarChartData
     func makeUIView(context: Context) -> BarChartView {
         chart.delegate = context.coordinator
         return chart
@@ -49,6 +49,7 @@ struct BarChart : UIViewRepresentable {
         func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
             parent.selectedItem.month = entry.x
             parent.selectedItem.quantity = entry.y
+            
         }
     }
 
@@ -100,6 +101,6 @@ struct BarChart : UIViewRepresentable {
 
 struct BarChart_Previews: PreviewProvider {
     static var previews: some View {
-        BarChart(entries: SampleBarChartData.dataForYear(2020), selectedItem: .constant(SampleBarChartData.selectedItem))
+        BarChart(selectedItem: .constant(SampleBarChartData.selectedItem), entries: SampleBarChartData.dataForYear(2020))
     }
 }

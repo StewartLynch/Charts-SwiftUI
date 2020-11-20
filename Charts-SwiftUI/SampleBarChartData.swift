@@ -15,7 +15,7 @@ struct SampleBarChartData {
     var year: Int
     var month: Double
     var quantity: Double
-    var itemType: ItemType = .itemIn
+    var itemType: ItemType
 
     static var selectedItem = SampleBarChartData(year: 2020, month: -1, quantity: -1, itemType: .none)
     static func initialItem(year: Int) -> SampleBarChartData {

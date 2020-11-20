@@ -9,6 +9,7 @@ import Charts
 import SwiftUI
 
 struct GroupedBarChart: UIViewRepresentable {
+    @Binding var selectedItem: SampleBarChartData
     var entriesIn: [BarChartDataEntry]
     var entriesOut: [BarChartDataEntry]
     let groupedBarChart = BarChartView()
@@ -32,6 +33,10 @@ struct GroupedBarChart: UIViewRepresentable {
         uiView.setScaleEnabled(false)
         if uiView.scaleX == 1.0 {
             uiView.zoom(scaleX: 1.5, scaleY: 1, x: 0, y: 0)
+        }
+        if selectedItem.month == -1 {
+            uiView.animate(xAxisDuration: 0, yAxisDuration: 0.5, easingOption: .linear)
+            uiView.highlightValue(nil, callDelegate: false)
         }
         formatLegend(legend: uiView.legend)
         formatDataSet(dataSet: dataSetIn, label: "Purchased", color: .red)
@@ -83,13 +88,22 @@ struct GroupedBarChart: UIViewRepresentable {
         legend.horizontalAlignment = .right
         legend.verticalAlignment = .top
         legend.drawInside = true
-        legend.yOffset = 30.0
+        legend.yOffset = 0.0
     }
 
     class Coordinator: NSObject, ChartViewDelegate {
         let parent: GroupedBarChart
         init(parent: GroupedBarChart) {
             self.parent = parent
+        }
+        func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+            parent.selectedItem.month = entry.x
+            parent.selectedItem.quantity = entry.y
+            if entry.y < 0 {
+                parent.selectedItem.itemType = .itemOut
+            } else {
+                parent.selectedItem.itemType = .itemIn
+            }
         }
     }
 
@@ -100,6 +114,6 @@ struct GroupedBarChart: UIViewRepresentable {
 
 struct GroupedBarChart_Previews: PreviewProvider {
     static var previews: some View {
-        GroupedBarChart(entriesIn: SampleBarChartData.dataForYear(2019, itemType: .itemIn), entriesOut: SampleBarChartData.dataForYear(2019, itemType: .itemOut))
+        GroupedBarChart(selectedItem: .constant(SampleBarChartData.selectedItem), entriesIn: SampleBarChartData.dataForYear(2019, itemType: .itemIn), entriesOut: SampleBarChartData.dataForYear(2019, itemType: .itemOut))
     }
 }

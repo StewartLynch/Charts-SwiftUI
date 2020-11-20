@@ -20,7 +20,7 @@ struct ContentView: View {
                 selectedItem.year = (selectedItem.year) == 2020 ? 2019 : 2020
                 selectedItem.month = -1
             }
-            BarChart(entries: SampleBarChartData.dataForYear(selectedItem.year), selectedItem: $selectedItem)
+            BarChart(selectedItem: $selectedItem, entries: SampleBarChartData.dataForYear(selectedItem.year))
                 .frame(height: 300)
             if selectedItem.month != -1 {
                 Text("\(Int(selectedItem.quantity)) for \(SampleBarChartData.monthArray[Int(selectedItem.month)])")
