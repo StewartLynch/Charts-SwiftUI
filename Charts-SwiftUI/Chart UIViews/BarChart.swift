@@ -57,11 +57,6 @@ struct BarChart : UIViewRepresentable {
         return Coordinator(parent: self)
     }
     
-    func updateData(dataSet: BarChartDataSet) -> BarChartData {
-        let data = BarChartData(dataSet: dataSet)
-        data.barWidth = 0.85 // Default
-        return data
-    }
     
     func formatDataSet(dataSet: BarChartDataSet) {
         dataSet.label = "My Bars"
@@ -95,7 +90,7 @@ struct BarChart : UIViewRepresentable {
         legend.horizontalAlignment = .right
         legend.verticalAlignment = .top
         legend.drawInside = true
-        legend.yOffset = 30.0
+//        legend.yOffset = 30.0
     }
 }
 

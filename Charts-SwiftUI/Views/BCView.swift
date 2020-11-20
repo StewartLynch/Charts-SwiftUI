@@ -8,7 +8,7 @@
 import SwiftUI
 import Charts
 
-struct ContentView: View {
+struct BCView: View {
 
     @State private var selectedItem:SampleBarChartData = SampleBarChartData.initialItem(year: 2019)
     @State private var barEntries: [BarChartDataEntry] = []
@@ -31,6 +31,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        BCView()
     }
 }
