@@ -29,22 +29,26 @@ struct GroupedBarChart: UIViewRepresentable {
         let dataSets:[BarChartDataSet] = [dataSetIn,dataSetOut]
         let chartData = BarChartData(dataSets: dataSets)
         uiView.data = chartData
-        uiView.rightAxis.enabled = false
-        uiView.setScaleEnabled(false)
-        if uiView.scaleX == 1.0 {
-            uiView.zoom(scaleX: 1.5, scaleY: 1, x: 0, y: 0)
-        }
-        if selectedItem.month == -1 {
-            uiView.animate(xAxisDuration: 0, yAxisDuration: 0.5, easingOption: .linear)
-            uiView.highlightValue(nil, callDelegate: false)
-        }
-        formatLegend(legend: uiView.legend)
-        formatDataSet(dataSet: dataSetIn, label: "Purchased", color: .red)
-        formatDataSet(dataSet: dataSetOut, label: "Consumed", color: .blue)
+        configureChart(uiView)
         let gw = formatChartDataReturnGroupWidth(chartData: chartData)
         formatXAxis(xAxis: uiView.xAxis, groupWidth: gw)
         formatLeftAxis(leftAxis: uiView.leftAxis)
+        formatLegend(legend: uiView.legend)
+        formatDataSet(dataSet: dataSetIn, label: "Purchased", color: .red)
+        formatDataSet(dataSet: dataSetOut, label: "Consumed", color: .blue)
         uiView.notifyDataSetChanged()
+    }
+
+    func configureChart(_ barChart: BarChartView) {
+        barChart.rightAxis.enabled = false
+        barChart.setScaleEnabled(false)
+        if barChart.scaleX == 1.0 {
+            barChart.zoom(scaleX: 1.5, scaleY: 1, x: 0, y: 0)
+        }
+        if selectedItem.month == -1 {
+            barChart.animate(xAxisDuration: 0, yAxisDuration: 0.5, easingOption: .linear)
+            barChart.highlightValue(nil, callDelegate: false)
+        }
     }
 
     func formatChartDataReturnGroupWidth(chartData: BarChartData) -> Double {

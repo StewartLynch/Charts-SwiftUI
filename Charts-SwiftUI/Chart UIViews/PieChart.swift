@@ -26,11 +26,11 @@ struct PieChart: UIViewRepresentable {
         dataSet.colors = ChartColorTemplates.colorful()
         let pieChartData = PieChartData(dataSet: dataSet)
         uiView.data = pieChartData
+        configureChart(uiView)
         formatCenter(uiView)
         formatDescription(description: uiView.chartDescription)
-        formatDataSet(dataSet: dataSet)
         formatLegend(legend: uiView.legend)
-        configureChart(uiView)
+        formatDataSet(dataSet: dataSet)
         uiView.notifyDataSetChanged()
     }
 

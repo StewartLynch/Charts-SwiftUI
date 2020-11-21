@@ -21,24 +21,58 @@ struct BarChart : UIViewRepresentable {
         let dataSet = BarChartDataSet(entries: entries)
         let barChartData = BarChartData(dataSet: dataSet)
         uiView.data = barChartData
-        uiView.noDataText = "No Data"
-        uiView.rightAxis.enabled = false
-        uiView.setScaleEnabled(false)
-        if uiView.scaleX == 1.0 {
-            uiView.zoom(scaleX: 1.5, scaleY: 1, x: 0, y: 0)
-        }
-        if selectedItem.month == -1 {
-            uiView.animate(xAxisDuration: 0, yAxisDuration: 0.5, easingOption: .linear)
-            uiView.highlightValue(nil, callDelegate: false)
-        }
-        uiView.fitBars = true
-        formatData(data: barChartData)
-        formatDataSet(dataSet: dataSet)
-        formatLegend(legend: uiView.legend)
+        configureChart(uiView)
         formatXAxis(xAxis: uiView.xAxis)
         formatLeftAxis(leftAxis: uiView.leftAxis)
+        formatLegend(legend: uiView.legend)
+        formatDataSet(dataSet: dataSet)
         // Necessary to refresh legend formnat
         uiView.notifyDataSetChanged()
+    }
+
+    func configureChart(_ barChart: BarChartView) {
+        barChart.noDataText = "No Data"
+        barChart.rightAxis.enabled = false
+        barChart.setScaleEnabled(false)
+        if barChart.scaleX == 1.0 {
+            barChart.zoom(scaleX: 1.5, scaleY: 1, x: 0, y: 0)
+        }
+        if selectedItem.month == -1 {
+            barChart.animate(xAxisDuration: 0, yAxisDuration: 0.5, easingOption: .linear)
+            barChart.highlightValue(nil, callDelegate: false)
+        }
+        barChart.fitBars = true
+    }
+
+    func formatXAxis(xAxis: XAxis) {
+        xAxis.labelPosition = .bottom
+        xAxis.valueFormatter = IndexAxisValueFormatter(values:SampleBarChartData.monthArray)
+        xAxis.labelTextColor =  .red
+    }
+
+    func formatLeftAxis(leftAxis:YAxis) {
+        let leftAxisFormatter = NumberFormatter()
+        leftAxisFormatter.numberStyle = .none
+        leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
+        leftAxis.axisMinimum = 0
+        leftAxis.labelTextColor =  .red
+    }
+
+    func formatLegend(legend: Legend) {
+        legend.textColor = UIColor.red
+        legend.horizontalAlignment = .right
+        legend.verticalAlignment = .top
+        legend.drawInside = true
+        //        legend.yOffset = 30.0
+    }
+
+    func formatDataSet(dataSet: BarChartDataSet) {
+        dataSet.label = "My Bars"
+        dataSet.highlightAlpha = 0.2
+        dataSet.colors = [.red]
+        let format = NumberFormatter()
+        format.numberStyle = .none
+        dataSet.valueFormatter = DefaultValueFormatter(formatter: format)
     }
     
     class Coordinator: NSObject, ChartViewDelegate {
@@ -56,42 +90,7 @@ struct BarChart : UIViewRepresentable {
     func makeCoordinator() -> Coordinator {
         return Coordinator(parent: self)
     }
-    
-    
-    func formatDataSet(dataSet: BarChartDataSet) {
-        dataSet.label = "My Bars"
-        dataSet.highlightAlpha = 0.2
-        dataSet.colors = [.red]
-        let format = NumberFormatter()
-        format.numberStyle = .none
-        dataSet.valueFormatter = DefaultValueFormatter(formatter: format)
-    }
 
-    func formatData(data:BarChartData) {
-        data.barWidth = 0.85
-    }
-
-    func formatLeftAxis(leftAxis:YAxis) {
-        let leftAxisFormatter = NumberFormatter()
-        leftAxisFormatter.numberStyle = .none
-        leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
-        leftAxis.axisMinimum = 0
-        leftAxis.labelTextColor =  .red
-    }
-
-    func formatXAxis(xAxis: XAxis) {
-        xAxis.labelPosition = .bottom
-        xAxis.valueFormatter = IndexAxisValueFormatter(values:SampleBarChartData.monthArray)
-        xAxis.labelTextColor =  .red
-    }
-    
-    func formatLegend(legend: Legend) {
-        legend.textColor = UIColor.red
-        legend.horizontalAlignment = .right
-        legend.verticalAlignment = .top
-        legend.drawInside = true
-//        legend.yOffset = 30.0
-    }
 }
 
 struct BarChart_Previews: PreviewProvider {

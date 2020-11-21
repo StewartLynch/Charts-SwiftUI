@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB776AA12568C346006BDCEF /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB776A9E2568C346006BDCEF /* BalloonMarker.swift */; };
 		BB92BA10256759E600D0FB13 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB92BA0F256759E600D0FB13 /* PieChart.swift */; };
 		BB92BA1425676E8900D0FB13 /* SamplePieChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB92BA1325676E8900D0FB13 /* SamplePieChartData.swift */; };
 		BB92BA1725679EBC00D0FB13 /* PCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB92BA1625679EBC00D0FB13 /* PCView.swift */; };
@@ -57,6 +58,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BB776A9E2568C346006BDCEF /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		BB92BA0F256759E600D0FB13 /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
 		BB92BA1325676E8900D0FB13 /* SamplePieChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamplePieChartData.swift; sourceTree = "<group>"; };
 		BB92BA1625679EBC00D0FB13 /* PCView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCView.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 		BB92BA1525679EA700D0FB13 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BB776A9E2568C346006BDCEF /* BalloonMarker.swift */,
 				BBD8978D256857AA001404F3 /* TabbedStartView.swift */,
 				BBC3C5B42562029300E3FFFD /* BCView.swift */,
 				BBF4266125662EBC00BCC31D /* GroupedBCView.swift */,
@@ -273,6 +276,7 @@
 				BBC3C5B52562029300E3FFFD /* BCView.swift in Sources */,
 				BBD53E4C256603F600C68F55 /* GroupedBarChart.swift in Sources */,
 				BBD8978E256857AA001404F3 /* TabbedStartView.swift in Sources */,
+				BB776AA12568C346006BDCEF /* BalloonMarker.swift in Sources */,
 				BB92BA10256759E600D0FB13 /* PieChart.swift in Sources */,
 				BBC3C5D3256207F200E3FFFD /* BarChart.swift in Sources */,
 				BBC3C5B32562029300E3FFFD /* Charts_SwiftUIApp.swift in Sources */,
