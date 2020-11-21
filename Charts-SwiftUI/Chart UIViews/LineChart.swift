@@ -9,7 +9,7 @@ import Charts
 import SwiftUI
 
 struct LineChart: UIViewRepresentable {
-    @Binding var selectedItem: SampleBarChartData
+//    @Binding var selectedItem: SampleBarChartData
     let lineChart = LineChartView()
     var entriesIn : [ChartDataEntry] // there is no LineChartDataEntry as I would have expected
     var entriesOut: [ChartDataEntry]
@@ -41,10 +41,7 @@ struct LineChart: UIViewRepresentable {
         if lineChart.scaleX == 1.0 {
             lineChart.zoom(scaleX: 1.5, scaleY: 1, x: 0, y: 0)
         }
-        if selectedItem.month == -1 {
             lineChart.animate(xAxisDuration: 0, yAxisDuration: 0.5, easingOption: .linear)
-            lineChart.highlightValue(nil, callDelegate: false)
-        }
         let marker:BalloonMarker = BalloonMarker(color: UIColor.red, font: UIFont(name: "Helvetica", size: 12)!, textColor: UIColor.white, insets: UIEdgeInsets(top: 7.0, left: 7.0, bottom: 7.0, right: 7.0))
         marker.minimumSize = CGSize(width: 75, height: 35)
         lineChart.marker = marker
@@ -63,6 +60,9 @@ struct LineChart: UIViewRepresentable {
         xAxis.valueFormatter = IndexAxisValueFormatter(values:SampleBarChartData.monthArray)
         xAxis.labelTextColor =  .red
         xAxis.labelFont = UIFont.boldSystemFont(ofSize: 12)
+        // Setting the max and min make sure that the markers are visible at the edges
+        xAxis.axisMaximum = 12
+        xAxis.axisMinimum = -1
     }
 
     func formatLegend(legend: Legend) {
@@ -93,7 +93,9 @@ struct LineChart: UIViewRepresentable {
 
 struct LineChart_Previews: PreviewProvider {
     static var previews: some View {
-        LineChart(selectedItem: .constant(SampleBarChartData.selectedItem), entriesIn: SampleBarChartData.lineChartDataForYear(2019, itemType: .itemIn), entriesOut: SampleBarChartData.lineChartDataForYear(2019, itemType: .itemOut))
+        LineChart(
+            entriesIn: SampleBarChartData.lineChartDataForYear(2019, itemType: .itemIn),
+            entriesOut: SampleBarChartData.lineChartDataForYear(2019, itemType: .itemOut))
             .frame(height: 400)
             .padding(.horizontal)
 

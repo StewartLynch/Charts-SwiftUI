@@ -11,23 +11,19 @@ import Charts
 struct LineChrtView: View {
     var entriesIn:[ChartDataEntry] = []
     var entriesOut:[ChartDataEntry] = []
-    @State private var selectedItem:SampleBarChartData = SampleBarChartData.initialItem(year: 2019)
+    @State private var year = 2019
     var body: some View {
         VStack {
-            Text("\(selectedItem.year)".replacingOccurrences(of: ",", with: ""))
+            Text("\(year)".replacingOccurrences(of: ",", with: ""))
                 .font(.title2)
             Button("Change Year") {
-                selectedItem.year = (selectedItem.year) == 2020 ? 2019 : 2020
-                selectedItem.month = -1
+                year = (year == 2020) ? 2019 : 2020
             }
-            LineChart(selectedItem: $selectedItem,
-                            entriesIn: SampleBarChartData.lineChartDataForYear(selectedItem.year, itemType: .itemIn),
-                            entriesOut: SampleBarChartData.lineChartDataForYear(selectedItem.year, itemType: .itemOut))
+            LineChart(
+                entriesIn: SampleBarChartData.lineChartDataForYear(year, itemType: .itemIn),
+                entriesOut: SampleBarChartData.lineChartDataForYear(year, itemType: .itemOut))
                 .frame(height: 500)
                 .padding(.horizontal)
-            if selectedItem.month != -1 {
-                Text("\(abs(Int(selectedItem.quantity))) items \(selectedItem.itemType == .itemIn ? "in" : "out") for \(SampleBarChartData.monthArray[Int(selectedItem.month)])")
-            }
         }
 
     }

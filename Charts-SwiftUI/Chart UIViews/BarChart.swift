@@ -67,7 +67,7 @@ struct BarChart : UIViewRepresentable {
     }
 
     func formatDataSet(dataSet: BarChartDataSet) {
-        dataSet.label = "My Bars"
+        dataSet.label = "Wine Consumption"
         dataSet.highlightAlpha = 0.2
         dataSet.colors = [.red]
         let format = NumberFormatter()
@@ -95,6 +95,7 @@ struct BarChart : UIViewRepresentable {
 
 struct BarChart_Previews: PreviewProvider {
     static var previews: some View {
-        BarChart(selectedItem: .constant(SampleBarChartData.selectedItem), entries: SampleBarChartData.dataForYear(2020))
+        BarChart(selectedItem: .constant(SampleBarChartData.selectedItem),
+                 entries: SampleBarChartData.dataForYear(2020))
     }
 }
