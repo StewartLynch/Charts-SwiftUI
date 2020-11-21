@@ -22,7 +22,7 @@ struct LineChrtView: View {
             LineChart(
                 entriesIn: SampleBarChartData.lineChartDataForYear(year, itemType: .itemIn),
                 entriesOut: SampleBarChartData.lineChartDataForYear(year, itemType: .itemOut))
-                .frame(height: 500)
+                .frame(height: 400)
                 .padding(.horizontal)
         }
 

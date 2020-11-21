@@ -17,7 +17,7 @@ struct PCView: View {
             PieChart(entries: SamplePieChartData.entriesForCategory(category),
                      category: $category,
                      descriptionText: category.rawValue.capitalized)
-                .frame(height: 500)
+                .frame(height: 400)
             Picker(selection: $category, label: Text("duh")) {
                 Text("Varieties").tag(SamplePieChartData.Category.variety)
                 Text("Wineries").tag(SamplePieChartData.Category.winery)

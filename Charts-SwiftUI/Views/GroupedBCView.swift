@@ -23,7 +23,7 @@ struct GroupedBCView: View {
             GroupedBarChart(selectedItem: $selectedItem,
                             entriesIn: SampleBarChartData.dataForYear(selectedItem.year, itemType: .itemIn),
                             entriesOut: SampleBarChartData.dataForYear(selectedItem.year, itemType: .itemOut))
-                .frame(height: 500)
+                .frame(height: 400)
             if selectedItem.month != -1 {
                 Text("\(abs(Int(selectedItem.quantity))) items \(selectedItem.itemType == .itemIn ? "in" : "out") for \(SampleBarChartData.monthArray[Int(selectedItem.month)])")
             }
