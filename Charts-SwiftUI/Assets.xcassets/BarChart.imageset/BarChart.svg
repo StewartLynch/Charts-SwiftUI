@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="16px" viewBox="0 0 24 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>BarChart</title>
+    <g id="BarChart" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" stroke="#111111" stroke-width="1.45856354" x="0.729281768" y="5.50276243" width="5.56906077" height="9.94475138" rx="2.51933702"></rect>
+        <rect id="Rectangle" stroke="#111111" stroke-width="1.45856354" x="17.4364641" y="1.25966851" width="5.56906077" height="14.1878453" rx="2.51933702"></rect>
+        <rect id="Rectangle" stroke="#111111" stroke-width="1.45856354" x="9.08287293" y="2.85082873" width="5.56906077" height="12.5966851" rx="2.51933702"></rect>
+    </g>
+</svg>

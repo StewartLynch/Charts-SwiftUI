@@ -10,7 +10,7 @@ import Charts
 
 struct BCView: View {
 
-    @State private var selectedItem:SampleBarChartData = SampleBarChartData.initialItem(year: 2019)
+    @State private var selectedItem:Transaction = Transaction.initialItem(year: 2019)
     @State private var barEntries: [BarChartDataEntry] = []
     var body: some View {
         VStack {
@@ -20,10 +20,13 @@ struct BCView: View {
                 selectedItem.year = (selectedItem.year) == 2020 ? 2019 : 2020
                 selectedItem.month = -1
             }
-            BarChart(selectedItem: $selectedItem, entries: SampleBarChartData.dataForYear(selectedItem.year))
+            BarChart(selectedItem: $selectedItem,
+                     entries: Transaction.transactionsForYear(selectedItem.year,
+                                                              transactions: Transaction.allTransactions))
+                
                 .frame(height: 300)
             if selectedItem.month != -1 {
-                Text("\(Int(selectedItem.quantity)) for \(SampleBarChartData.monthArray[Int(selectedItem.month)])")
+                Text("\(Int(selectedItem.quantity)) for \(Transaction.monthArray[Int(selectedItem.month)])")
             }
         }
     }

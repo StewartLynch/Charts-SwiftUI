@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="16px" viewBox="0 0 24 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Grouped</title>
+    <g id="Grouped" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" stroke="#111111" stroke-width="1.06077348" x="0.53038674" y="0.397790055" width="2.91712707" height="9.54696133" rx="0.928176796"></rect>
+        <rect id="Rectangle" stroke="#111111" stroke-width="1.06077348" x="3.97790055" y="10.3425414" width="2.91712707" height="5.17127072" rx="0.928176796"></rect>
+        <rect id="Rectangle" stroke="#111111" stroke-width="1.06077348" x="9.01657459" y="3.84530387" width="2.91712707" height="6.09944751" rx="0.928176796"></rect>
+        <rect id="Rectangle" stroke="#111111" stroke-width="1.06077348" x="12.4640884" y="10.4751381" width="2.91712707" height="2.91712707" rx="0.928176796"></rect>
+        <rect id="Rectangle" stroke="#111111" stroke-width="1.06077348" x="17.3701657" y="1.85635359" width="2.91712707" height="8.08839779" rx="0.928176796"></rect>
+        <rect id="Rectangle" stroke="#111111" stroke-width="1.06077348" x="20.6850829" y="10.4751381" width="2.91712707" height="4.11049724" rx="0.928176796"></rect>
+    </g>
+</svg>

@@ -12,14 +12,14 @@ struct TabbedStartView: View {
         TabView {
             BCView()
                 .tabItem {
-                    Image(systemName: "chart.bar.fill")
+                    Image("BarChart")
                     Text("Bar Chart")
                 }
 
             GroupedBCView()
                 .tabItem {
-                    Image(systemName: "chart.bar.fill")
-                    Text("Bar Chart2")
+                    Image("Grouped")
+                    Text("Grouped Bar Chart")
                 }
             PCView()
                 .tabItem {
@@ -28,8 +28,13 @@ struct TabbedStartView: View {
                 }
             LineChrtView()
                 .tabItem {
-                    Image(systemName: "waveform.path.ecg.rectangle")
-                    Text("Line Chart")
+                    Image("StackedLine")
+                    Text("Stacked Line Chart")
+                }
+            CombinedChrtView()
+                .tabItem {
+                    Image("StackedBarLine")
+                    Text("Bar + Line Chart")
                 }
         }
     }

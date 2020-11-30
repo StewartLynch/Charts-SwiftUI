@@ -9,7 +9,7 @@ import Charts
 import SwiftUI
 
 struct GroupedBarChart: UIViewRepresentable {
-    @Binding var selectedItem: SampleBarChartData
+    @Binding var selectedItem: Transaction
     var entriesIn: [BarChartDataEntry]
     var entriesOut: [BarChartDataEntry]
     let groupedBarChart = BarChartView()
@@ -82,7 +82,7 @@ struct GroupedBarChart: UIViewRepresentable {
         xAxis.axisMaximum = startX + groupWidth * Double(entriesIn.count)
         xAxis.axisMinimum = startX
         xAxis.labelPosition = .bottom
-        xAxis.valueFormatter = IndexAxisValueFormatter(values:SampleBarChartData.monthArray)
+        xAxis.valueFormatter = IndexAxisValueFormatter(values:Transaction.monthArray)
         xAxis.labelTextColor =  .red
         xAxis.centerAxisLabelsEnabled = true
     }
@@ -118,6 +118,12 @@ struct GroupedBarChart: UIViewRepresentable {
 
 struct GroupedBarChart_Previews: PreviewProvider {
     static var previews: some View {
-        GroupedBarChart(selectedItem: .constant(SampleBarChartData.selectedItem), entriesIn: SampleBarChartData.dataForYear(2019, itemType: .itemIn), entriesOut: SampleBarChartData.dataForYear(2019, itemType: .itemOut))
+        GroupedBarChart(selectedItem: .constant(Transaction.selectedItem),
+                        entriesIn: Transaction.transactionsForYear(2019,
+                                                                   transactions: Transaction.allTransactions,
+                                                                   itemType: .itemIn),
+                        entriesOut: Transaction.transactionsForYear(2019,
+                                                                    transactions: Transaction.allTransactions,
+                                                                    itemType: .itemOut))
     }
 }

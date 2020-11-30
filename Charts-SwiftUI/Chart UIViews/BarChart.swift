@@ -9,12 +9,12 @@ import Charts
 import SwiftUI
 
 struct BarChart : UIViewRepresentable {
-    @Binding var selectedItem: SampleBarChartData
+    @Binding var selectedItem: Transaction
     var entries : [BarChartDataEntry]
-    let chart = BarChartView()
+    let barChart = BarChartView()
     func makeUIView(context: Context) -> BarChartView {
-        chart.delegate = context.coordinator
-        return chart
+        barChart.delegate = context.coordinator
+        return barChart
     }
     
     func updateUIView(_ uiView: BarChartView, context: Context) {
@@ -46,7 +46,7 @@ struct BarChart : UIViewRepresentable {
 
     func formatXAxis(xAxis: XAxis) {
         xAxis.labelPosition = .bottom
-        xAxis.valueFormatter = IndexAxisValueFormatter(values:SampleBarChartData.monthArray)
+        xAxis.valueFormatter = IndexAxisValueFormatter(values:Transaction.monthArray)
         xAxis.labelTextColor =  .red
     }
 
@@ -95,7 +95,8 @@ struct BarChart : UIViewRepresentable {
 
 struct BarChart_Previews: PreviewProvider {
     static var previews: some View {
-        BarChart(selectedItem: .constant(SampleBarChartData.selectedItem),
-                 entries: SampleBarChartData.dataForYear(2020))
+        BarChart(selectedItem: .constant(Transaction.selectedItem),
+                 entries: Transaction.transactionsForYear(2019,
+                                                          transactions: Transaction.allTransactions))
     }
 }

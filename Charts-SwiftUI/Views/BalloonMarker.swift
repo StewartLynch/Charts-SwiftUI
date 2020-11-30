@@ -185,7 +185,7 @@ open class BalloonMarker: MarkerImage
     
     open override func refreshContent(entry: ChartDataEntry, highlight: Highlight) {
         // This is the bubble text
-        setLabel("\(Int(entry.y)) for \(SampleBarChartData.monthArray[Int(entry.x)])")
+        setLabel("\(Int(entry.y)) for \(Transaction.monthArray[Int(entry.x)])")
     }
     
     @objc open func setLabel(_ newLabel: String)

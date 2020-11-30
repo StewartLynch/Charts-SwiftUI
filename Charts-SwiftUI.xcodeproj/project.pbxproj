@@ -7,17 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB13C890257470C700650A1D /* CombinedChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13C88F257470C700650A1D /* CombinedChartView.swift */; };
 		BB776AA12568C346006BDCEF /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB776A9E2568C346006BDCEF /* BalloonMarker.swift */; };
 		BB92BA10256759E600D0FB13 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB92BA0F256759E600D0FB13 /* PieChart.swift */; };
-		BB92BA1425676E8900D0FB13 /* SamplePieChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB92BA1325676E8900D0FB13 /* SamplePieChartData.swift */; };
+		BB92BA1425676E8900D0FB13 /* Wine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB92BA1325676E8900D0FB13 /* Wine.swift */; };
 		BB92BA1725679EBC00D0FB13 /* PCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB92BA1625679EBC00D0FB13 /* PCView.swift */; };
+		BBB0DBFE25744420005457D8 /* Sale.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0DBFD25744420005457D8 /* Sale.swift */; };
+		BBB0DC02257449C4005457D8 /* CombinedChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB0DC01257449C4005457D8 /* CombinedChart.swift */; };
 		BBC3C5B32562029300E3FFFD /* Charts_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC3C5B22562029300E3FFFD /* Charts_SwiftUIApp.swift */; };
 		BBC3C5B52562029300E3FFFD /* BCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC3C5B42562029300E3FFFD /* BCView.swift */; };
 		BBC3C5B72562029400E3FFFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBC3C5B62562029400E3FFFD /* Assets.xcassets */; };
 		BBC3C5BA2562029400E3FFFD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBC3C5B92562029400E3FFFD /* Preview Assets.xcassets */; };
 		BBC3C5D3256207F200E3FFFD /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC3C5D2256207F200E3FFFD /* BarChart.swift */; };
 		BBD53E4C256603F600C68F55 /* GroupedBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD53E4B256603F600C68F55 /* GroupedBarChart.swift */; };
-		BBD53E4E2566163600C68F55 /* SampleBarChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD53E4D2566163600C68F55 /* SampleBarChartData.swift */; };
+		BBD53E4E2566163600C68F55 /* Transactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD53E4D2566163600C68F55 /* Transactions.swift */; };
 		BBD8978E256857AA001404F3 /* TabbedStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD8978D256857AA001404F3 /* TabbedStartView.swift */; };
 		BBD8979425688AA3001404F3 /* LineChrtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD8979325688AA3001404F3 /* LineChrtView.swift */; };
 		BBD8979825688B06001404F3 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD8979725688B06001404F3 /* LineChart.swift */; };
@@ -58,10 +61,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BB13C88F257470C700650A1D /* CombinedChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedChartView.swift; sourceTree = "<group>"; };
 		BB776A9E2568C346006BDCEF /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		BB92BA0F256759E600D0FB13 /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
-		BB92BA1325676E8900D0FB13 /* SamplePieChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamplePieChartData.swift; sourceTree = "<group>"; };
+		BB92BA1325676E8900D0FB13 /* Wine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wine.swift; sourceTree = "<group>"; };
 		BB92BA1625679EBC00D0FB13 /* PCView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCView.swift; sourceTree = "<group>"; };
+		BBB0DBFD25744420005457D8 /* Sale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sale.swift; sourceTree = "<group>"; };
+		BBB0DC01257449C4005457D8 /* CombinedChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedChart.swift; sourceTree = "<group>"; };
 		BBC3C5AF2562029300E3FFFD /* Charts-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Charts-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBC3C5B22562029300E3FFFD /* Charts_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Charts_SwiftUIApp.swift; sourceTree = "<group>"; };
 		BBC3C5B42562029300E3FFFD /* BCView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCView.swift; sourceTree = "<group>"; };
@@ -70,7 +76,7 @@
 		BBC3C5BB2562029400E3FFFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBC3C5D2256207F200E3FFFD /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
 		BBD53E4B256603F600C68F55 /* GroupedBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupedBarChart.swift; sourceTree = "<group>"; };
-		BBD53E4D2566163600C68F55 /* SampleBarChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleBarChartData.swift; sourceTree = "<group>"; };
+		BBD53E4D2566163600C68F55 /* Transactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transactions.swift; sourceTree = "<group>"; };
 		BBD8978D256857AA001404F3 /* TabbedStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbedStartView.swift; sourceTree = "<group>"; };
 		BBD8979325688AA3001404F3 /* LineChrtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChrtView.swift; sourceTree = "<group>"; };
 		BBD8979725688B06001404F3 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
@@ -94,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				BBC3C5D2256207F200E3FFFD /* BarChart.swift */,
+				BBB0DC01257449C4005457D8 /* CombinedChart.swift */,
 				BBD53E4B256603F600C68F55 /* GroupedBarChart.swift */,
 				BB92BA0F256759E600D0FB13 /* PieChart.swift */,
 				BBD8979725688B06001404F3 /* LineChart.swift */,
@@ -104,8 +111,9 @@
 		BB1E53DB25684835005D906A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BBD53E4D2566163600C68F55 /* SampleBarChartData.swift */,
-				BB92BA1325676E8900D0FB13 /* SamplePieChartData.swift */,
+				BBD53E4D2566163600C68F55 /* Transactions.swift */,
+				BB92BA1325676E8900D0FB13 /* Wine.swift */,
+				BBB0DBFD25744420005457D8 /* Sale.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -113,12 +121,13 @@
 		BB92BA1525679EA700D0FB13 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				BB776A9E2568C346006BDCEF /* BalloonMarker.swift */,
 				BBD8978D256857AA001404F3 /* TabbedStartView.swift */,
+				BB776A9E2568C346006BDCEF /* BalloonMarker.swift */,
 				BBC3C5B42562029300E3FFFD /* BCView.swift */,
 				BBF4266125662EBC00BCC31D /* GroupedBCView.swift */,
 				BB92BA1625679EBC00D0FB13 /* PCView.swift */,
 				BBD8979325688AA3001404F3 /* LineChrtView.swift */,
+				BB13C88F257470C700650A1D /* CombinedChartView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -272,17 +281,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB13C890257470C700650A1D /* CombinedChartView.swift in Sources */,
 				BBF4266225662EBC00BCC31D /* GroupedBCView.swift in Sources */,
 				BBC3C5B52562029300E3FFFD /* BCView.swift in Sources */,
+				BBB0DC02257449C4005457D8 /* CombinedChart.swift in Sources */,
 				BBD53E4C256603F600C68F55 /* GroupedBarChart.swift in Sources */,
 				BBD8978E256857AA001404F3 /* TabbedStartView.swift in Sources */,
 				BB776AA12568C346006BDCEF /* BalloonMarker.swift in Sources */,
+				BBB0DBFE25744420005457D8 /* Sale.swift in Sources */,
 				BB92BA10256759E600D0FB13 /* PieChart.swift in Sources */,
 				BBC3C5D3256207F200E3FFFD /* BarChart.swift in Sources */,
 				BBC3C5B32562029300E3FFFD /* Charts_SwiftUIApp.swift in Sources */,
-				BBD53E4E2566163600C68F55 /* SampleBarChartData.swift in Sources */,
+				BBD53E4E2566163600C68F55 /* Transactions.swift in Sources */,
 				BBD8979825688B06001404F3 /* LineChart.swift in Sources */,
-				BB92BA1425676E8900D0FB13 /* SamplePieChartData.swift in Sources */,
+				BB92BA1425676E8900D0FB13 /* Wine.swift in Sources */,
 				BBD8979425688AA3001404F3 /* LineChrtView.swift in Sources */,
 				BB92BA1725679EBC00D0FB13 /* PCView.swift in Sources */,
 			);

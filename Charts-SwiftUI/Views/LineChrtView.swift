@@ -20,8 +20,8 @@ struct LineChrtView: View {
                 year = (year == 2020) ? 2019 : 2020
             }
             LineChart(
-                entriesIn: SampleBarChartData.lineChartDataForYear(year, itemType: .itemIn),
-                entriesOut: SampleBarChartData.lineChartDataForYear(year, itemType: .itemOut))
+                entriesIn: Transaction.lineChartDataForYear(year, transactions: Transaction.allTransactions, itemType: .itemIn),
+                entriesOut: Transaction.lineChartDataForYear(year, transactions: Transaction.allTransactions, itemType: .itemOut))
                 .frame(height: 400)
                 .padding(.horizontal)
         }

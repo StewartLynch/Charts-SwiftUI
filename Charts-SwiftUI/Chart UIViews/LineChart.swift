@@ -9,7 +9,7 @@ import Charts
 import SwiftUI
 
 struct LineChart: UIViewRepresentable {
-//    @Binding var selectedItem: SampleBarChartData
+    // NOTE: No Coordinator or delegate functions in this example
     let lineChart = LineChartView()
     var entriesIn : [ChartDataEntry] // there is no LineChartDataEntry as I would have expected
     var entriesOut: [ChartDataEntry]
@@ -31,6 +31,7 @@ struct LineChart: UIViewRepresentable {
         formatDataSet(dataSet: dataSetOut, label: "Wine out", color: .blue)
         uiView.notifyDataSetChanged()
     }
+    
 
     func configureChart(_ lineChart: LineChartView) {
         lineChart.drawGridBackgroundEnabled = true
@@ -57,7 +58,7 @@ struct LineChart: UIViewRepresentable {
 
     func formatXAxis(xAxis: XAxis) {
         xAxis.labelPosition = .bottom
-        xAxis.valueFormatter = IndexAxisValueFormatter(values:SampleBarChartData.monthArray)
+        xAxis.valueFormatter = IndexAxisValueFormatter(values:Transaction.monthArray)
         xAxis.labelTextColor =  .red
         xAxis.labelFont = UIFont.boldSystemFont(ofSize: 12)
         // Setting the max and min make sure that the markers are visible at the edges
@@ -94,10 +95,9 @@ struct LineChart: UIViewRepresentable {
 struct LineChart_Previews: PreviewProvider {
     static var previews: some View {
         LineChart(
-            entriesIn: SampleBarChartData.lineChartDataForYear(2019, itemType: .itemIn),
-            entriesOut: SampleBarChartData.lineChartDataForYear(2019, itemType: .itemOut))
+            entriesIn: Transaction.lineChartDataForYear(2019, transactions: Transaction.allTransactions, itemType: .itemIn),
+            entriesOut: Transaction.lineChartDataForYear(2019, transactions: Transaction.allTransactions, itemType: .itemOut))
             .frame(height: 400)
             .padding(.horizontal)
-
     }
 }

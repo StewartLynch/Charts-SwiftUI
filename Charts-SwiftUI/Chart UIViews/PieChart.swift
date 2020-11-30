@@ -10,7 +10,7 @@ import SwiftUI
 struct PieChart: UIViewRepresentable {
     var entries: [PieChartDataEntry]
     let pieChart = PieChartView()
-    @Binding var category: SamplePieChartData.Category
+    @Binding var category: Wine.Category
     var descriptionText:String
     var defaultCenterText: String {
         category.rawValue.capitalized
@@ -73,20 +73,18 @@ struct PieChart: UIViewRepresentable {
     }
 
     func formatDataSet(dataSet: ChartDataSet) {
-        dataSet.label = ""
         dataSet.drawValuesEnabled = false
     }
     func formatLegend(legend: Legend) {
-        legend.horizontalAlignment = .center
-        legend.verticalAlignment = .top
-        legend.yOffset = 40
+        legend.enabled = false
     }
     
 }
 
 struct PieChart_Previews: PreviewProvider {
     static var previews: some View {
-        PieChart(entries: SamplePieChartData.entriesForCategory(.variety),
+        PieChart(entries: Wine.winesForCategory(.variety,
+                                                wines: Wine.allWines),
                  category: .constant(.variety),
                  descriptionText: "Variety")
             .frame(height: 400)
