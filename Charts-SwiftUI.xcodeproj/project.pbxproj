@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BB13C890257470C700650A1D /* CombinedChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13C88F257470C700650A1D /* CombinedChartView.swift */; };
+		BB2757842576120E003022E2 /* CombinedMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2757812576120E003022E2 /* CombinedMarker.swift */; };
 		BB776AA12568C346006BDCEF /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB776A9E2568C346006BDCEF /* BalloonMarker.swift */; };
 		BB92BA10256759E600D0FB13 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB92BA0F256759E600D0FB13 /* PieChart.swift */; };
 		BB92BA1425676E8900D0FB13 /* Wine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB92BA1325676E8900D0FB13 /* Wine.swift */; };
@@ -62,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		BB13C88F257470C700650A1D /* CombinedChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedChartView.swift; sourceTree = "<group>"; };
+		BB2757812576120E003022E2 /* CombinedMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedMarker.swift; sourceTree = "<group>"; };
 		BB776A9E2568C346006BDCEF /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		BB92BA0F256759E600D0FB13 /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
 		BB92BA1325676E8900D0FB13 /* Wine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wine.swift; sourceTree = "<group>"; };
@@ -100,10 +102,10 @@
 			isa = PBXGroup;
 			children = (
 				BBC3C5D2256207F200E3FFFD /* BarChart.swift */,
-				BBB0DC01257449C4005457D8 /* CombinedChart.swift */,
 				BBD53E4B256603F600C68F55 /* GroupedBarChart.swift */,
 				BB92BA0F256759E600D0FB13 /* PieChart.swift */,
 				BBD8979725688B06001404F3 /* LineChart.swift */,
+				BBB0DC01257449C4005457D8 /* CombinedChart.swift */,
 			);
 			path = "Chart UIViews";
 			sourceTree = "<group>";
@@ -118,16 +120,25 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		BB27578E25761796003022E2 /* Markers */ = {
+			isa = PBXGroup;
+			children = (
+				BB776A9E2568C346006BDCEF /* BalloonMarker.swift */,
+				BB2757812576120E003022E2 /* CombinedMarker.swift */,
+			);
+			path = Markers;
+			sourceTree = "<group>";
+		};
 		BB92BA1525679EA700D0FB13 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				BBD8978D256857AA001404F3 /* TabbedStartView.swift */,
-				BB776A9E2568C346006BDCEF /* BalloonMarker.swift */,
 				BBC3C5B42562029300E3FFFD /* BCView.swift */,
 				BBF4266125662EBC00BCC31D /* GroupedBCView.swift */,
 				BB92BA1625679EBC00D0FB13 /* PCView.swift */,
 				BBD8979325688AA3001404F3 /* LineChrtView.swift */,
 				BB13C88F257470C700650A1D /* CombinedChartView.swift */,
+				BB27578E25761796003022E2 /* Markers */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -292,6 +303,7 @@
 				BB92BA10256759E600D0FB13 /* PieChart.swift in Sources */,
 				BBC3C5D3256207F200E3FFFD /* BarChart.swift in Sources */,
 				BBC3C5B32562029300E3FFFD /* Charts_SwiftUIApp.swift in Sources */,
+				BB2757842576120E003022E2 /* CombinedMarker.swift in Sources */,
 				BBD53E4E2566163600C68F55 /* Transactions.swift in Sources */,
 				BBD8979825688B06001404F3 /* LineChart.swift in Sources */,
 				BB92BA1425676E8900D0FB13 /* Wine.swift in Sources */,

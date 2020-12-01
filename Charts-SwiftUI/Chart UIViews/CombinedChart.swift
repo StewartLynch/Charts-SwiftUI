@@ -12,9 +12,8 @@ struct CombinedChart: UIViewRepresentable {
     var barEntries : [BarChartDataEntry]
     var lineEntries : [ChartDataEntry]
     @Binding var quarter: Int
-    let combinedChart = CombinedChartView()
     func makeUIView(context: Context) -> CombinedChartView {
-        return combinedChart
+        return CombinedChartView()
     }
     
     func updateUIView(_ uiView: CombinedChartView, context: Context) {
@@ -29,6 +28,14 @@ struct CombinedChart: UIViewRepresentable {
         combinedChart.drawValueAboveBarEnabled = false
         combinedChart.setScaleEnabled(false)
         combinedChart.animate(xAxisDuration: 0.5, yAxisDuration: 0.5, easingOption: .linear)
+        if combinedChart.scaleX == 1.0 && quarter == 0 {
+            combinedChart.zoom(scaleX: 1.5, scaleY: 1, x: 0, y: 0)
+        } else {
+            combinedChart.fitScreen()
+        }
+        let marker:CombinedMarker = CombinedMarker(color: UIColor.blue, font: UIFont(name: "Helvetica", size: 12)!, textColor: UIColor.white, insets: UIEdgeInsets(top: 7.0, left: 7.0, bottom: 7.0, right: 7.0), quarter: quarter)
+        marker.minimumSize = CGSize(width: 75, height: 35)
+        combinedChart.marker = marker
     }
     
     func setChartData(_ combinedChart: CombinedChartView) {
@@ -93,6 +100,7 @@ struct CombinedChart: UIViewRepresentable {
         barDataSet.valueTextColor = UIColor.white
         barDataSet.valueFont = .boldSystemFont(ofSize: 10)
         barDataSet.axisDependency = .left
+        barDataSet.highlightAlpha = 0
     }
 }
 

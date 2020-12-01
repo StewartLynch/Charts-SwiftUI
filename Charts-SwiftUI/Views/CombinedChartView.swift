@@ -12,6 +12,10 @@ struct CombinedChrtView: View {
     @State private var quarter: Int = 0
     var body: some View {
         VStack {
+            Text("Units Sold and Proceeds")
+                .font(.title)
+            Text("\(quarter == 0 ? "Swipe from right to see more months." : " ")")
+                .font(.caption)
             Picker(selection: $quarter, label: Text("Quarter")) {
                 Text("All").tag(0)
                 Text("Q1").tag(1)
@@ -20,7 +24,7 @@ struct CombinedChrtView: View {
                 Text("Q4").tag(4)
             }.pickerStyle(SegmentedPickerStyle())
         CombinedChart(barEntries: Sale.UnitsFor(Sale.allSales, quarter: quarter), lineEntries: Sale.TransactionsFor(Sale.allSales, quarter: quarter), quarter: $quarter)
-            .frame(height: 500)
+            .frame(height: 400)
         }.padding(.horizontal)
     }
 }

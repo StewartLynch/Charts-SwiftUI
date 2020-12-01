@@ -12,11 +12,18 @@ struct LineChrtView: View {
     @State private var year = 2019
     var body: some View {
         VStack {
-            Text("\(year)".replacingOccurrences(of: ",", with: ""))
-                .font(.title2)
-            Button("Change Year") {
-                year = (year == 2020) ? 2019 : 2020
+            Text("My Wine Consumption")
+                .font(.title)
+            VStack {
+                Text("Tap on a point to see information")
+                Text("Swipe from right to see more months.")
             }
+            .font(.caption)
+            Picker(selection: $year, label: Text("Year"), content: {
+                Text("2019").tag(2019)
+                Text("2020").tag(2020)
+            })
+            .pickerStyle(SegmentedPickerStyle())
             LineChart(
                 entriesIn: Transaction.lineChartDataForYear(year, transactions: Transaction.allTransactions, itemType: .itemIn),
                 entriesOut: Transaction.lineChartDataForYear(year, transactions: Transaction.allTransactions, itemType: .itemOut))

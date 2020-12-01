@@ -34,21 +34,6 @@ struct PieChart: UIViewRepresentable {
         uiView.notifyDataSetChanged()
     }
 
-    class Coordinator: NSObject, ChartViewDelegate {
-        var parent: PieChart
-        init(parent: PieChart) {
-            self.parent = parent
-        }
-
-        func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-            let lableText = (entry.value(forKey: "label")! as! String)
-            let numText =  Int(entry.value(forKey: "value")! as! Double)
-            parent.pieChart.centerAttributedText = setCenterText("""
-\(lableText)
-\(numText) bottles.
-""")
-        }
-    }
 
     func configureChart(_ pieChart: PieChartView) {
         pieChart.rotationEnabled = false
@@ -56,18 +41,18 @@ struct PieChart: UIViewRepresentable {
         pieChart.drawEntryLabelsEnabled = false
         pieChart.highlightValue(x: -1, dataSetIndex: 0, callDelegate: false)
     }
-
-    func makeCoordinator() -> Coordinator {
-        return Coordinator(parent: self)
-    }
     
     static func setCenterText(_ text: String) -> NSAttributedString{
-        let paragraphStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+        let font = UIFont.systemFont(ofSize: 17)
+        let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineBreakMode = .byTruncatingTail
         paragraphStyle.alignment = .center
-        let centerText = NSMutableAttributedString(string: text)
-        centerText.setAttributes([.font : UIFont(name: "HelveticaNeue-Light", size: 17)!,
-                                  .paragraphStyle : paragraphStyle], range: NSRange(location: 0, length: centerText.length))
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: font,
+            .foregroundColor: UIColor.label,
+            .paragraphStyle: paragraphStyle
+        ]
+        let centerText = NSAttributedString(string: text, attributes: attributes)
         return centerText
     }
 
@@ -87,6 +72,27 @@ struct PieChart: UIViewRepresentable {
     }
     func formatLegend(legend: Legend) {
         legend.enabled = false
+    }
+
+    class Coordinator: NSObject, ChartViewDelegate {
+        var parent: PieChart
+        init(parent: PieChart) {
+            self.parent = parent
+        }
+
+        func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+            let lableText = (entry.value(forKey: "label")! as! String)
+            let numText =  Int(entry.value(forKey: "value")! as! Double)
+            parent.pieChart.centerAttributedText = setCenterText("""
+\(lableText)
+\(numText) bottles.
+""")
+        }
+    }
+
+
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(parent: self)
     }
     
 }
