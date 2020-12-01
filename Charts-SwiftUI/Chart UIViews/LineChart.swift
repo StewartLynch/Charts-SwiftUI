@@ -18,20 +18,39 @@ struct LineChart: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: LineChartView, context: Context) {
+        setChartData(uiView)
+        configureChart(uiView)
+        formatXAxis(xAxis: uiView.xAxis)
+        formatLeftAxis(leftAxis: uiView.leftAxis)
+        formatLegend(legend: uiView.legend)
+        uiView.notifyDataSetChanged()
+    }
+    
+    func setChartData(_ lineChart: LineChartView) {
         let dataSetIn = LineChartDataSet(entries: entriesIn)
         let dataSetOut = LineChartDataSet(entries: entriesOut)
         let dataSets: [LineChartDataSet] = [dataSetIn, dataSetOut]
         let lineChartData = LineChartData(dataSets: dataSets)
-        uiView.data = lineChartData
-        configureChart(uiView)
-        formatLeftAxis(leftAxis: uiView.leftAxis)
-        formatXAxis(xAxis: uiView.xAxis)
-        formatLegend(legend: uiView.legend)
+        lineChart.data = lineChartData
         formatDataSet(dataSet: dataSetIn, label: "Wine In", color: .red)
         formatDataSet(dataSet: dataSetOut, label: "Wine out", color: .blue)
-        uiView.notifyDataSetChanged()
     }
     
+    func formatDataSet(dataSet: LineChartDataSet, label: String, color: UIColor) {
+        dataSet.label = label
+        dataSet.colors = [color]
+        dataSet.valueColors = [color]
+        dataSet.circleColors = [color]
+        dataSet.circleRadius = 4
+        dataSet.circleHoleRadius = 0
+        dataSet.mode = .horizontalBezier
+        dataSet.lineWidth = 4
+        dataSet.lineDashLengths = [4]
+        let format = NumberFormatter()
+        format.numberStyle = .none
+        dataSet.valueFormatter = DefaultValueFormatter(formatter: format)
+        dataSet.valueFont = UIFont.systemFont(ofSize: 12)
+    }
 
     func configureChart(_ lineChart: LineChartView) {
         lineChart.drawGridBackgroundEnabled = true
@@ -48,14 +67,6 @@ struct LineChart: UIViewRepresentable {
         lineChart.marker = marker
     }
 
-    func formatLeftAxis(leftAxis:YAxis) {
-        let leftAxisFormatter = NumberFormatter()
-        leftAxisFormatter.numberStyle = .none
-        leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
-        leftAxis.labelTextColor =  .red
-        leftAxis.labelFont = UIFont.boldSystemFont(ofSize: 12)
-    }
-
     func formatXAxis(xAxis: XAxis) {
         xAxis.labelPosition = .bottom
         xAxis.valueFormatter = IndexAxisValueFormatter(values:Transaction.monthArray)
@@ -65,6 +76,14 @@ struct LineChart: UIViewRepresentable {
         xAxis.axisMaximum = 12
         xAxis.axisMinimum = -1
     }
+    
+    func formatLeftAxis(leftAxis:YAxis) {
+        let leftAxisFormatter = NumberFormatter()
+        leftAxisFormatter.numberStyle = .none
+        leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
+        leftAxis.labelTextColor =  .red
+        leftAxis.labelFont = UIFont.boldSystemFont(ofSize: 12)
+    }
 
     func formatLegend(legend: Legend) {
         legend.textColor = UIColor.red
@@ -72,22 +91,6 @@ struct LineChart: UIViewRepresentable {
         legend.verticalAlignment = .top
         legend.drawInside = true
         legend.yOffset = 20.0
-    }
-
-    func formatDataSet(dataSet: LineChartDataSet, label: String, color: UIColor) {
-        dataSet.label = label
-        dataSet.colors = [color]
-        dataSet.valueColors = [color]
-        dataSet.circleColors = [color]
-        dataSet.circleRadius = 4
-        dataSet.circleHoleRadius = 0
-        dataSet.mode = .horizontalBezier
-        dataSet.lineWidth = 4
-        dataSet.lineDashLengths = [4]
-        let format = NumberFormatter()
-        format.numberStyle = .none
-        dataSet.valueFormatter = DefaultValueFormatter(formatter: format)
-        dataSet.valueFont = UIFont.systemFont(ofSize: 12)
     }
 }
 

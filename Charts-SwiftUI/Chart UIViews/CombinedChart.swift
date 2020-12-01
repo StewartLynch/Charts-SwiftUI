@@ -18,24 +18,11 @@ struct CombinedChart: UIViewRepresentable {
     
     func updateUIView(_ uiView: CombinedChartView, context: Context) {
         setChartData(uiView)
+        configureChart(uiView)
         formatXAxis(uiView.xAxis)
         formatLeftAxis(uiView.leftAxis)
         formatRightAxis(uiView.rightAxis)
-        configureChart(uiView)
         uiView.notifyDataSetChanged()
-    }
-    func configureChart(_ combinedChart: CombinedChartView) {
-        combinedChart.drawValueAboveBarEnabled = false
-        combinedChart.setScaleEnabled(false)
-        combinedChart.animate(xAxisDuration: 0.5, yAxisDuration: 0.5, easingOption: .linear)
-        if combinedChart.scaleX == 1.0 && quarter == 0 {
-            combinedChart.zoom(scaleX: 1.5, scaleY: 1, x: 0, y: 0)
-        } else {
-            combinedChart.fitScreen()
-        }
-        let marker:CombinedMarker = CombinedMarker(color: UIColor.blue, font: UIFont(name: "Helvetica", size: 12)!, textColor: UIColor.white, insets: UIEdgeInsets(top: 7.0, left: 7.0, bottom: 7.0, right: 7.0), quarter: quarter)
-        marker.minimumSize = CGSize(width: 75, height: 35)
-        combinedChart.marker = marker
     }
     
     func setChartData(_ combinedChart: CombinedChartView) {
@@ -50,6 +37,46 @@ struct CombinedChart: UIViewRepresentable {
         formatLineChartDataSet(lineDataSet)
         formatBarChartDataSet(barDataSet)
     }
+    
+    func formatLineChartDataSet(_ lineDataSet: LineChartDataSet) {
+        lineDataSet.label = "Revenue"
+        lineDataSet.setColor(.systemIndigo)
+        lineDataSet.lineWidth = 2.5
+        lineDataSet.setCircleColor(.systemIndigo)
+        lineDataSet.circleRadius = 5
+        lineDataSet.circleHoleRadius = 0
+        let dataSetFormatter = NumberFormatter()
+        dataSetFormatter.numberStyle = .currency
+        dataSetFormatter.maximumFractionDigits = 0
+        lineDataSet.valueFormatter = DefaultValueFormatter(formatter: dataSetFormatter)
+        lineDataSet.valueFont = .boldSystemFont(ofSize: 10)
+        lineDataSet.valueTextColor = .systemIndigo
+        lineDataSet.axisDependency = .right
+    }
+
+    func formatBarChartDataSet( _ barDataSet: BarChartDataSet) {
+        barDataSet.label = "Units Sold"
+        barDataSet.colors = [UIColor.systemPurple]
+        barDataSet.valueTextColor = UIColor.white
+        barDataSet.valueFont = .boldSystemFont(ofSize: 10)
+        barDataSet.axisDependency = .left
+        barDataSet.highlightAlpha = 0
+    }
+    
+    func configureChart(_ combinedChart: CombinedChartView) {
+        combinedChart.drawValueAboveBarEnabled = false
+        combinedChart.setScaleEnabled(false)
+        combinedChart.animate(xAxisDuration: 0.5, yAxisDuration: 0.5, easingOption: .linear)
+        if combinedChart.scaleX == 1.0 && quarter == 0 {
+            combinedChart.zoom(scaleX: 1.5, scaleY: 1, x: 0, y: 0)
+        } else {
+            combinedChart.fitScreen()
+        }
+        let marker:CombinedMarker = CombinedMarker(color: UIColor.blue, font: UIFont(name: "Helvetica", size: 12)!, textColor: UIColor.white, insets: UIEdgeInsets(top: 7.0, left: 7.0, bottom: 7.0, right: 7.0), quarter: quarter)
+        marker.minimumSize = CGSize(width: 75, height: 35)
+        combinedChart.marker = marker
+    }
+    
     func formatXAxis(_ xAxis: XAxis) {
         xAxis.labelPosition = .bottom
         xAxis.axisMinimum = -0.5
@@ -76,31 +103,6 @@ struct CombinedChart: UIViewRepresentable {
         rightAxis.axisMinimum = 0
         rightAxis.axisMaximum = (lineEntries.map{$0.y}.max() ?? 0) + 150
         rightAxis.labelTextColor =  .red
-    }
-
-    func formatLineChartDataSet(_ lineDataSet: LineChartDataSet) {
-        lineDataSet.label = "Revenue"
-        lineDataSet.setColor(.systemIndigo)
-        lineDataSet.lineWidth = 2.5
-        lineDataSet.setCircleColor(.systemIndigo)
-        lineDataSet.circleRadius = 5
-        lineDataSet.circleHoleRadius = 0
-        let dataSetFormatter = NumberFormatter()
-        dataSetFormatter.numberStyle = .currency
-        dataSetFormatter.maximumFractionDigits = 0
-        lineDataSet.valueFormatter = DefaultValueFormatter(formatter: dataSetFormatter)
-        lineDataSet.valueFont = .boldSystemFont(ofSize: 10)
-        lineDataSet.valueTextColor = .systemIndigo
-        lineDataSet.axisDependency = .right
-    }
-
-    func formatBarChartDataSet( _ barDataSet: BarChartDataSet) {
-        barDataSet.label = "Units Sold"
-        barDataSet.colors = [UIColor.systemPurple]
-        barDataSet.valueTextColor = UIColor.white
-        barDataSet.valueFont = .boldSystemFont(ofSize: 10)
-        barDataSet.axisDependency = .left
-        barDataSet.highlightAlpha = 0
     }
 }
 

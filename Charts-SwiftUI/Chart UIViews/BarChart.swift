@@ -18,18 +18,30 @@ struct BarChart : UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: BarChartView, context: Context) {
-        let dataSet = BarChartDataSet(entries: entries)
-        let barChartData = BarChartData(dataSet: dataSet)
-        uiView.data = barChartData
+        setChartData(uiView)
         configureChart(uiView)
         formatXAxis(xAxis: uiView.xAxis)
         formatLeftAxis(leftAxis: uiView.leftAxis)
         formatLegend(legend: uiView.legend)
-        formatDataSet(dataSet: dataSet)
-        // Necessary to refresh legend formnat
         uiView.notifyDataSetChanged()
     }
 
+    func setChartData(_ barChart: BarChartView) {
+        let dataSet = BarChartDataSet(entries: entries)
+        let barChartData = BarChartData(dataSet: dataSet)
+        barChart.data = barChartData
+        formatDataSet(dataSet: dataSet)
+    }
+    
+    func formatDataSet(dataSet: BarChartDataSet) {
+        dataSet.label = "Wine Consumption"
+        dataSet.highlightAlpha = 0.2
+        dataSet.colors = [.red]
+        let format = NumberFormatter()
+        format.numberStyle = .none
+        dataSet.valueFormatter = DefaultValueFormatter(formatter: format)
+    }
+    
     func configureChart(_ barChart: BarChartView) {
         barChart.noDataText = "No Data"
         barChart.rightAxis.enabled = false
@@ -65,15 +77,6 @@ struct BarChart : UIViewRepresentable {
         legend.drawInside = true
         //        legend.yOffset = 30.0
     }
-
-    func formatDataSet(dataSet: BarChartDataSet) {
-        dataSet.label = "Wine Consumption"
-        dataSet.highlightAlpha = 0.2
-        dataSet.colors = [.red]
-        let format = NumberFormatter()
-        format.numberStyle = .none
-        dataSet.valueFormatter = DefaultValueFormatter(formatter: format)
-    }
     
     class Coordinator: NSObject, ChartViewDelegate {
         let parent: BarChart
@@ -83,7 +86,6 @@ struct BarChart : UIViewRepresentable {
         func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
             parent.selectedItem.month = entry.x
             parent.selectedItem.quantity = entry.y
-            
         }
     }
 

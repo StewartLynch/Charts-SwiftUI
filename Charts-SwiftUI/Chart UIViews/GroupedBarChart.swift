@@ -23,22 +23,53 @@ struct GroupedBarChart: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: BarChartView, context: Context) {
-        uiView.noDataText = "No Data"
+        setChartDataAndXaxis(uiView)
+        configureChart(uiView)
+        formatLeftAxis(leftAxis: uiView.leftAxis)
+        formatLegend(legend: uiView.legend)
+        uiView.notifyDataSetChanged()
+    }
+    
+    func setChartDataAndXaxis(_ barChart: BarChartView) {
+        barChart.noDataText = "No Data"
         let dataSetIn = BarChartDataSet(entries: entriesIn)
         let dataSetOut = BarChartDataSet(entries: entriesOut)
         let dataSets:[BarChartDataSet] = [dataSetIn,dataSetOut]
         let chartData = BarChartData(dataSets: dataSets)
-        uiView.data = chartData
-        configureChart(uiView)
-        let gw = formatChartDataReturnGroupWidth(chartData: chartData)
-        formatXAxis(xAxis: uiView.xAxis, groupWidth: gw)
-        formatLeftAxis(leftAxis: uiView.leftAxis)
-        formatLegend(legend: uiView.legend)
+        barChart.data = chartData
         formatDataSet(dataSet: dataSetIn, label: "Purchased", color: .red)
         formatDataSet(dataSet: dataSetOut, label: "Consumed", color: .blue)
-        uiView.notifyDataSetChanged()
+        let gw = formatChartDataReturnGroupWidth(chartData: chartData)
+        formatXAxis(xAxis: barChart.xAxis, groupWidth: gw)
+    }
+    
+    func formatDataSet(dataSet: BarChartDataSet, label: String, color: UIColor) {
+        dataSet.label = label
+        dataSet.highlightAlpha = 0.2
+        dataSet.colors = [color]
+        let format = NumberFormatter()
+        dataSet.valueColors = [color]
+        format.numberStyle = .none
+        dataSet.valueFormatter = DefaultValueFormatter(formatter: format)
     }
 
+    func formatChartDataReturnGroupWidth(chartData: BarChartData) -> Double {
+        // (barWidth + barSpace) * 2 + 0.2 = 1.00 -> interval per "group"
+        chartData.barWidth = barWidth
+        // fromX is your lowest x value
+        chartData.groupBars(fromX: startX, groupSpace: groupSpace, barSpace: barSpace)
+        // return the groupWidth as it is necessary for the xAxis
+        return chartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace)
+    }
+    func formatXAxis(xAxis: XAxis, groupWidth: Double) {
+        xAxis.axisMaximum = startX + groupWidth * Double(entriesIn.count)
+        xAxis.axisMinimum = startX
+        xAxis.labelPosition = .bottom
+        xAxis.valueFormatter = IndexAxisValueFormatter(values:Transaction.monthArray)
+        xAxis.labelTextColor =  .red
+        xAxis.centerAxisLabelsEnabled = true
+    }
+    
     func configureChart(_ barChart: BarChartView) {
         barChart.rightAxis.enabled = false
         barChart.setScaleEnabled(false)
@@ -51,40 +82,11 @@ struct GroupedBarChart: UIViewRepresentable {
         }
     }
 
-    func formatChartDataReturnGroupWidth(chartData: BarChartData) -> Double {
-        // (barWidth + barSpace) * 2 + 0.2 = 1.00 -> interval per "group"
-        chartData.barWidth = barWidth
-        // fromX is your lowest x value
-        chartData.groupBars(fromX: startX, groupSpace: groupSpace, barSpace: barSpace)
-        // return the groupWidth as it is necessary for the xAxis
-        return chartData.groupWidth(groupSpace: groupSpace, barSpace: barSpace)
-
-    }
-
     func formatLeftAxis(leftAxis:YAxis) {
         let leftAxisFormatter = NumberFormatter()
         leftAxisFormatter.numberStyle = .none
         leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
         leftAxis.labelTextColor =  .red
-    }
-
-    func formatDataSet(dataSet: BarChartDataSet, label: String, color: UIColor) {
-        dataSet.label = label
-        dataSet.highlightAlpha = 0.2
-        dataSet.colors = [color]
-        let format = NumberFormatter()
-        dataSet.valueColors = [color]
-        format.numberStyle = .none
-        dataSet.valueFormatter = DefaultValueFormatter(formatter: format)
-    }
-
-    func formatXAxis(xAxis: XAxis, groupWidth: Double) {
-        xAxis.axisMaximum = startX + groupWidth * Double(entriesIn.count)
-        xAxis.axisMinimum = startX
-        xAxis.labelPosition = .bottom
-        xAxis.valueFormatter = IndexAxisValueFormatter(values:Transaction.monthArray)
-        xAxis.labelTextColor =  .red
-        xAxis.centerAxisLabelsEnabled = true
     }
 
     func formatLegend(legend: Legend) {
