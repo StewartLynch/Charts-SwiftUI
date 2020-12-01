@@ -12,21 +12,32 @@ struct GroupedBCView: View {
     @State private var selectedItem:Transaction = Transaction.initialItem(year: 2019)
     var body: some View {
         VStack {
-            Text("\(selectedItem.year)".replacingOccurrences(of: ",", with: ""))
-                .font(.title2)
-            Button("Change Year") {
-                selectedItem.year = (selectedItem.year) == 2020 ? 2019 : 2020
-                selectedItem.month = -1
-            }
+            Text("Wine In and Out")
+                .font(.title)
+            Picker(selection: $selectedItem.year, label: Text("Year"), content: {
+                Text("2019").tag(2019)
+                Text("2020").tag(2020)
+            })
+            .pickerStyle(SegmentedPickerStyle())
             GroupedBarChart(selectedItem: $selectedItem,
                             entriesIn: Transaction.transactionsForYear(selectedItem.year, transactions: Transaction.allTransactions, itemType: .itemIn),
                             entriesOut: Transaction.transactionsForYear(selectedItem.year, transactions: Transaction.allTransactions, itemType: .itemOut))
                 .frame(height: 400)
             if selectedItem.month != -1 {
-                Text("\(abs(Int(selectedItem.quantity))) items \(selectedItem.itemType == .itemIn ? "in" : "out") for \(Transaction.monthArray[Int(selectedItem.month)])")
+                Text("\(selectedItem.itemType == .itemIn ? "Purchased " : "Consumed ") \(abs(Int(selectedItem.quantity))) wines in \(Transaction.monthArray[Int(selectedItem.month)])")
+            } else {
+                Text(" ")
             }
+            VStack {
+                Text("Swipe from right to see more months.")
+                Text("Tap on a bar to see detail.")
+            }
+                .font(.caption)
         }
-
+        .onChange(of: selectedItem.year, perform: { value in
+            selectedItem.month = -1
+        })
+        .padding(.horizontal)
     }
 }
 

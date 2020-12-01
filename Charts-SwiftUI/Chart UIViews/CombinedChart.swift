@@ -63,7 +63,8 @@ struct CombinedChart: UIViewRepresentable {
 
     func formatRightAxis(_ rightAxis: YAxis) {
         let rightAxisFormatter = NumberFormatter()
-        rightAxisFormatter.numberStyle = .none
+        rightAxisFormatter.numberStyle = .currency
+        rightAxisFormatter.maximumFractionDigits = 0
         rightAxis.valueFormatter = DefaultAxisValueFormatter(formatter: rightAxisFormatter)
         rightAxis.axisMinimum = 0
         rightAxis.axisMaximum = (lineEntries.map{$0.y}.max() ?? 0) + 150
@@ -77,6 +78,10 @@ struct CombinedChart: UIViewRepresentable {
         lineDataSet.setCircleColor(.systemIndigo)
         lineDataSet.circleRadius = 5
         lineDataSet.circleHoleRadius = 0
+        let dataSetFormatter = NumberFormatter()
+        dataSetFormatter.numberStyle = .currency
+        dataSetFormatter.maximumFractionDigits = 0
+        lineDataSet.valueFormatter = DefaultValueFormatter(formatter: dataSetFormatter)
         lineDataSet.valueFont = .boldSystemFont(ofSize: 10)
         lineDataSet.valueTextColor = .systemIndigo
         lineDataSet.axisDependency = .right

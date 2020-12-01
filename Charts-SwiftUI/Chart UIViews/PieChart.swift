@@ -43,10 +43,10 @@ struct PieChart: UIViewRepresentable {
         func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
             let lableText = (entry.value(forKey: "label")! as! String)
             let numText =  Int(entry.value(forKey: "value")! as! Double)
-            parent.pieChart.centerText = """
+            parent.pieChart.centerAttributedText = setCenterText("""
 \(lableText)
-\(numText)
-"""
+\(numText) bottles.
+""")
         }
     }
 
@@ -60,11 +60,21 @@ struct PieChart: UIViewRepresentable {
     func makeCoordinator() -> Coordinator {
         return Coordinator(parent: self)
     }
+    
+    static func setCenterText(_ text: String) -> NSAttributedString{
+        let paragraphStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+        paragraphStyle.lineBreakMode = .byTruncatingTail
+        paragraphStyle.alignment = .center
+        let centerText = NSMutableAttributedString(string: text)
+        centerText.setAttributes([.font : UIFont(name: "HelveticaNeue-Light", size: 17)!,
+                                  .paragraphStyle : paragraphStyle], range: NSRange(location: 0, length: centerText.length))
+        return centerText
+    }
 
     func formatCenter(_ pieChart: PieChartView) {
         pieChart.holeColor = UIColor.systemBackground
         pieChart.centerTextRadiusPercent = 0.95
-        pieChart.centerText = defaultCenterText
+        pieChart.centerAttributedText = PieChart.setCenterText(defaultCenterText)
     }
 
     func formatDescription(description: Description) {
