@@ -9,8 +9,6 @@ import SwiftUI
 import Charts
 
 struct LineChrtView: View {
-    var entriesIn:[ChartDataEntry] = []
-    var entriesOut:[ChartDataEntry] = []
     @State private var year = 2019
     var body: some View {
         VStack {

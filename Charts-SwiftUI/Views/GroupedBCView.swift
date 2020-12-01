@@ -9,8 +9,6 @@ import SwiftUI
 import Charts
 
 struct GroupedBCView: View {
-    var entriesIn:[BarChartDataEntry] = []
-    var entriesOut:[BarChartDataEntry] = []
     @State private var selectedItem:Transaction = Transaction.initialItem(year: 2019)
     var body: some View {
         VStack {

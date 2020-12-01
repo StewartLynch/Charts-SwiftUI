@@ -9,9 +9,7 @@ import SwiftUI
 import Charts
 
 struct PCView: View {
-    @State private var pieChartEntries: [PieChartDataEntry] = []
     @State private var category: Wine.Category = .variety
-
     var body: some View {
         VStack {
             PieChart(entries: Wine.winesForCategory(category, wines: Wine.allWines),

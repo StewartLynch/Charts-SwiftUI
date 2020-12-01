@@ -10,8 +10,6 @@ import Charts
 
 struct CombinedChrtView: View {
     @State private var year: Int = 2020
-    @State private var barEntries: [BarChartDataEntry] = []
-    @State private var lineEntries: [ChartDataEntry] = []
     var body: some View {
         VStack {
             Picker(selection: $year, label: Text("Year")) {
