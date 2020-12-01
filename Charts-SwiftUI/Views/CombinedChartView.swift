@@ -9,14 +9,17 @@ import SwiftUI
 import Charts
 
 struct CombinedChrtView: View {
-    @State private var year: Int = 2020
+    @State private var quarter: Int = 0
     var body: some View {
         VStack {
-            Picker(selection: $year, label: Text("Year")) {
-                Text("2019").tag(2019)
-                Text("2020").tag(2020)
+            Picker(selection: $quarter, label: Text("Quarter")) {
+                Text("All").tag(0)
+                Text("Q1").tag(1)
+                Text("Q2").tag(2)
+                Text("Q3").tag(3)
+                Text("Q4").tag(4)
             }.pickerStyle(SegmentedPickerStyle())
-        CombinedChart(barEntries: Sale.UnitsFor(Sale.allSales, year: year), lineEntries: Sale.TransactionsFor(Sale.allSales, year: year), year: $year)
+        CombinedChart(barEntries: Sale.UnitsFor(Sale.allSales, quarter: quarter), lineEntries: Sale.TransactionsFor(Sale.allSales, quarter: quarter), quarter: $quarter)
             .frame(height: 500)
         }.padding(.horizontal)
     }

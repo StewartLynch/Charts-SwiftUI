@@ -23,7 +23,7 @@ struct TabbedStartView: View {
                 }
             PCView()
                 .tabItem {
-                    Image(systemName: "chart.pie.fill")
+                    Image(systemName: "chart.pie")
                     Text("Pie Chart")
                 }
             LineChrtView()

@@ -11,7 +11,7 @@ import SwiftUI
 struct CombinedChart: UIViewRepresentable {
     var barEntries : [BarChartDataEntry]
     var lineEntries : [ChartDataEntry]
-    @Binding var year: Int
+    @Binding var quarter: Int
     let combinedChart = CombinedChartView()
     func makeUIView(context: Context) -> CombinedChartView {
         return combinedChart
@@ -46,9 +46,9 @@ struct CombinedChart: UIViewRepresentable {
     func formatXAxis(_ xAxis: XAxis) {
         xAxis.labelPosition = .bottom
         xAxis.axisMinimum = -0.5
-        xAxis.axisMaximum = 11.5
+        xAxis.axisMaximum = Double(barEntries.count) - 0.5
         xAxis.granularity = 1
-        xAxis.valueFormatter = IndexAxisValueFormatter(values: Sale.months)
+        xAxis.valueFormatter = IndexAxisValueFormatter(values: Sale.monthsToDisplayForQuarter(quarter))
         xAxis.labelTextColor =  UIColor.label
     }
 
@@ -95,6 +95,6 @@ struct CombinedChart: UIViewRepresentable {
 
 struct CombinedChart_Previews: PreviewProvider {
     static var previews: some View {
-        CombinedChart(barEntries: Sale.UnitsFor(Sale.allSales, year: 2019), lineEntries: Sale.TransactionsFor(Sale.allSales, year: 2019), year: .constant(2019))
+        CombinedChart(barEntries: Sale.UnitsFor(Sale.allSales, quarter: 0), lineEntries: Sale.TransactionsFor(Sale.allSales, quarter: 0), quarter: .constant(0))
     }
 }
