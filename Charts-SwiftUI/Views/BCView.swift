@@ -11,7 +11,6 @@ import Charts
 struct BCView: View {
 
     @State private var selectedItem:Transaction = Transaction.initialItem(year: 2019)
-    @State private var barEntries: [BarChartDataEntry] = []
     var body: some View {
         VStack {
             Text("\(selectedItem.year)".replacingOccurrences(of: ",", with: ""))

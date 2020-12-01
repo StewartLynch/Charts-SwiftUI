@@ -11,17 +11,19 @@ import SwiftUI
 struct CombinedChart: UIViewRepresentable {
     var barEntries : [BarChartDataEntry]
     var lineEntries : [ChartDataEntry]
+    @Binding var year: Int
     let combinedChart = CombinedChartView()
     func makeUIView(context: Context) -> CombinedChartView {
         return combinedChart
     }
     
     func updateUIView(_ uiView: CombinedChartView, context: Context) {
-        configureChart(uiView)
-        setChartData()
+        setChartData(uiView)
         formatXAxis(uiView.xAxis)
         formatLeftAxis(uiView.leftAxis)
         formatRightAxis(uiView.rightAxis)
+        configureChart(uiView)
+        uiView.notifyDataSetChanged()
     }
     func configureChart(_ combinedChart: CombinedChartView) {
         combinedChart.drawValueAboveBarEnabled = false
@@ -29,7 +31,7 @@ struct CombinedChart: UIViewRepresentable {
         combinedChart.animate(xAxisDuration: 0.5, yAxisDuration: 0.5, easingOption: .linear)
     }
     
-    func setChartData() {
+    func setChartData(_ combinedChart: CombinedChartView) {
         let barDataSet = BarChartDataSet(entries: barEntries)
         let barChartData = BarChartData(dataSet: barDataSet)
         let lineDataSet = LineChartDataSet(entries: lineEntries)
@@ -37,14 +39,14 @@ struct CombinedChart: UIViewRepresentable {
         let data = CombinedChartData()
         data.lineData = lineChartData
         data.barData = barChartData
+        combinedChart.data = data
         formatLineChartDataSet(lineDataSet)
         formatBarChartDataSet(barDataSet)
-        combinedChart.data = data
     }
     func formatXAxis(_ xAxis: XAxis) {
         xAxis.labelPosition = .bottom
         xAxis.axisMinimum = -0.5
-        xAxis.axisMaximum = 5.5
+        xAxis.axisMaximum = 11.5
         xAxis.granularity = 1
         xAxis.valueFormatter = IndexAxisValueFormatter(values: Sale.months)
         xAxis.labelTextColor =  UIColor.label
@@ -93,6 +95,6 @@ struct CombinedChart: UIViewRepresentable {
 
 struct CombinedChart_Previews: PreviewProvider {
     static var previews: some View {
-        CombinedChart(barEntries: Sale.UnitsFor(Sale.allSales), lineEntries: Sale.TransactionsFor(Sale.allSales))
+        CombinedChart(barEntries: Sale.UnitsFor(Sale.allSales, year: 2019), lineEntries: Sale.TransactionsFor(Sale.allSales, year: 2019), year: .constant(2019))
     }
 }
