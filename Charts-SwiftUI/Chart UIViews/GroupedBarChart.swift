@@ -71,6 +71,7 @@ struct GroupedBarChart: UIViewRepresentable {
     }
     
     func configureChart(_ barChart: BarChartView) {
+        barChart.noDataText = "No Data"
         barChart.rightAxis.enabled = false
         barChart.setScaleEnabled(false)
         if barChart.scaleX == 1.0 {

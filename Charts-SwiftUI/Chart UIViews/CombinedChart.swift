@@ -64,6 +64,7 @@ struct CombinedChart: UIViewRepresentable {
     }
     
     func configureChart(_ combinedChart: CombinedChartView) {
+        combinedChart.noDataText = "No Data"
         combinedChart.drawValueAboveBarEnabled = false
         combinedChart.setScaleEnabled(false)
         combinedChart.animate(xAxisDuration: 0.5, yAxisDuration: 0.5, easingOption: .linear)

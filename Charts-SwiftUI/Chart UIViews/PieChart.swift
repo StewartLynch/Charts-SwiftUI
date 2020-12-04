@@ -43,6 +43,7 @@ struct PieChart: UIViewRepresentable {
     }
     
     func configureChart(_ pieChart: PieChartView) {
+        pieChart.noDataText = "No Data"
         pieChart.rotationEnabled = false
         pieChart.animate(yAxisDuration: 0.5, easingOption: .easeInOutCirc)
         pieChart.drawEntryLabelsEnabled = false

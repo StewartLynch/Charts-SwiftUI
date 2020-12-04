@@ -53,6 +53,7 @@ struct LineChart: UIViewRepresentable {
     }
 
     func configureChart(_ lineChart: LineChartView) {
+        lineChart.noDataText = "No Data"
         lineChart.drawGridBackgroundEnabled = true
         lineChart.gridBackgroundColor = UIColor.tertiarySystemFill
         lineChart.drawBordersEnabled = true
